@@ -11,7 +11,6 @@ RSpec.configure do |config|
     if actual_failure? 
       SeleniumTestReportFormatter.capture_system_state(@driver, self.example)
     end
-    @driver.quit
   end
 
 end
