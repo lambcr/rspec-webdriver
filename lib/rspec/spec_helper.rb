@@ -8,11 +8,6 @@ require File.expand_path(File.dirname(__FILE__) + "/reporting/selenium_test_repo
 
 RSpec.configure do |config|
 
-  config.before(:all) do
-    @headless = Headless.new
-    @headless.start
-  end
-
   config.before(:each) do
     @headless.video.start_capture
   end
