@@ -58,8 +58,8 @@ class SeleniumTestReportFormatter < RSpec::Core::Formatters::HtmlFormatter
   end
 
   # Should be called from config.after(:each) in spec helper
-  def self.capture_system_state(selenium_driver, example)
-    system_capture = Selenium::RSpec::Reporting::SystemCapture.new(selenium_driver, example, file_path_strategy)
+  def self.capture_system_state(selenium_driver, headless, example)
+    system_capture = Selenium::RSpec::Reporting::SystemCapture.new(selenium_driver, headless, example, file_path_strategy)
     system_capture.capture_system_state                      
   end
 
