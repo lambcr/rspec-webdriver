@@ -1,5 +1,4 @@
 require "rubygems"
-gem "rspec", ">=2.0"
 require 'rspec/core'
 require 'rspec/core/example'
 
