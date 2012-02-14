@@ -26,8 +26,8 @@ module RSpec
       def actual_failure?
         case example.exception
         when nil
-          false
-        when RSpec::Core::PendingExampleFixedError
+
+        when RSpec::Core::Pending::PendingExampleFixedError
              #RSpec::Example::ExamplePendingError, 
              #RSpec::Example::PendingExampleFixedError,
              #RSpec::Example::NoDescriptionError
