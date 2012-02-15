@@ -35,6 +35,10 @@ module Selenium
           "#{relative_dir}/example_#{example.reporting_uid}_page_screenshot.png"
         end
 
+        def relative_file_path_for_video(example)
+          "#{relative_dir}/example_#{example.reporting_uid}_video.webm"
+        end
+
         def relative_file_path_for_remote_control_logs(example)
           "#{relative_dir}/example_#{example.reporting_uid}_remote_control.log"
         end
@@ -53,6 +57,10 @@ module Selenium
 
         def file_path_for_page_screenshot(example)
           file_path relative_file_path_for_page_screenshot(example)
+        end
+
+        def file_path_for_video(example)
+          file_path relative_file_path_for_video(example)
         end
 
         def file_path_for_remote_control_logs(example)

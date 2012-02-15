@@ -22,6 +22,7 @@ module Selenium
           dom_id = "example_" + example.reporting_uid
           system_screenshot_url = @file_path_strategy.relative_file_path_for_system_screenshot(example)
           page_screenshot_url = @file_path_strategy.relative_file_path_for_page_screenshot(example)
+          video_url = @file_path_strategy.relative_file_path_for_video(example)
           snapshot_url = @file_path_strategy.relative_file_path_for_html_capture(example)
           remote_control_logs_url = @file_path_strategy.relative_file_path_for_remote_control_logs(example)
           
@@ -37,6 +38,9 @@ module Selenium
           end
           if File.exists? @file_path_strategy.file_path_for_system_screenshot(example)
             html << toggable_image_section(dom_id, :id => "system_screenshot", :name => "System Screenshot", :url => system_screenshot_url)
+          end
+          if File.exists? @file_path_strategy.file_path_for_video(example)
+            html << toggable_video_section(dom_id, :id => "video", :name => "Video", :url => video_url)
           end
           
           return html
@@ -109,6 +113,21 @@ module Selenium
           </div>
           <br/>
           
+          EOS
+        end
+
+        def toggable_video_section(dom_id, options)
+          <<-EOS
+
+          <div>[<a id="#{dom_id}_#{options[:id]}_link" href="javascript:toggleVisilibility('#{dom_id}_#{options[:id]}', '#{options[:name]}');">Show #{options[:name]}</a>]</div>
+          <br/>
+          <div id="#{dom_id}_#{options[:id]}" style="display: none">
+            <video src="#{options[:url]}" controls>
+              Your browser does not support the <code>video</code> element.
+            </video>
+          </div>
+          <br/>
+
           EOS
         end
         
