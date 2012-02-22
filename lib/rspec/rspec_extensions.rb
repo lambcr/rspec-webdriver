@@ -1,5 +1,4 @@
 require "rubygems"
-gem "rspec", ">=2.0"
 require 'rspec/core'
 require 'rspec/core/example'
 
@@ -27,8 +26,8 @@ module RSpec
       def actual_failure?
         case example.exception
         when nil
-          false
-        when RSpec::Core::PendingExampleFixedError
+
+        when RSpec::Core::Pending::PendingExampleFixedError
              #RSpec::Example::ExamplePendingError, 
              #RSpec::Example::PendingExampleFixedError,
              #RSpec::Example::NoDescriptionError
